@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "MarqueeText/*": ["./node_modules/react-marquee-text/dist/*"]
     }
   }
 }

@@ -8,16 +8,17 @@ const NavLink = async () => {
       next: { revalidate: 3600 },
     });
     const resdata = await res.json();
+    categories = resdata;
 
-    if (Array.isArray(resdata)) {
-      categories = resdata;
-    } else if (Array.isArray(resdata?.data)) {
-      categories = resdata.data;
-    } else if (Array.isArray(resdata?.resdata)) {
-      categories = resdata.resdata;
-    } else if (Array.isArray(resdata?.categories)) {
-      categories = resdata.categories;
-    }
+    // if (Array.isArray(resdata)) {
+    //   categories = resdata;
+    // } else if (Array.isArray(resdata?.data)) {
+    //   categories = resdata.data;
+    // } else if (Array.isArray(resdata?.resdata)) {
+    //   categories = resdata.resdata;
+    // } else if (Array.isArray(resdata?.categories)) {
+    //   categories = resdata.categories;
+    // }
   } catch (error) {
     console.error("Failed to fetch categories:", error);
   }

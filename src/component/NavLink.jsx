@@ -1,4 +1,4 @@
-import Link from "next/link";
+import CategoryNavList from "./CategoryNavList";
 
 const NavLink = async () => {
   let categories = [];
@@ -8,17 +8,16 @@ const NavLink = async () => {
       next: { revalidate: 3600 },
     });
     const resdata = await res.json();
-    categories = resdata;
 
-    // if (Array.isArray(resdata)) {
-    //   categories = resdata;
-    // } else if (Array.isArray(resdata?.data)) {
-    //   categories = resdata.data;
-    // } else if (Array.isArray(resdata?.resdata)) {
-    //   categories = resdata.resdata;
-    // } else if (Array.isArray(resdata?.categories)) {
-    //   categories = resdata.categories;
-    // }
+    if (Array.isArray(resdata)) {
+      categories = resdata;
+    } else if (Array.isArray(resdata?.data)) {
+      categories = resdata.data;
+    } else if (Array.isArray(resdata?.categories)) {
+      categories = resdata.categories;
+    } else if (Array.isArray(resdata?.resdata)) {
+      categories = resdata.resdata;
+    }
   } catch (error) {
     console.error("Failed to fetch categories:", error);
   }
@@ -26,18 +25,7 @@ const NavLink = async () => {
   return (
     <div className="w-full border-t border-gray-100 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center gap-6 md:gap-8 overflow-x-auto py-2.5 no-scrollbar scroll-smooth">
-          {categories.map((n) => (
-            <Link
-              key={n.id || n.slug}
-              href={`/?category=${n.slug}`}
-              className="flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-gray-700 hover:text-emerald-700 transition-colors"
-            >
-              <span className="text-base select-none">{n.icon}</span>
-              <span>{n.nameBn}</span>
-            </Link>
-          ))}
-        </div>
+        <CategoryNavList categories={categories} />
       </div>
     </div>
   );

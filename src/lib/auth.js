@@ -23,4 +23,7 @@ export const auth = betterAuth({
   database: mongodbAdapter(db, {
     client,
   }),
+  trustedOrigins: [
+    "https://bazardor-b6l9twmnd-moneytrack.vercel.app",
+  ],
 });

@@ -1,11 +1,12 @@
 import Marquee from "@/component/Marquee";
+import Hero from "@/component/Hero";
 
 export default function Home() {
   return (
-    
     <div>
-      <Marquee></Marquee>
-      <h1>Welcome to our Bazar Dor home page</h1>
+      <Marquee />
+      <Hero />
+
     </div>
   );
 }

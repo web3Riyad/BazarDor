@@ -48,7 +48,7 @@ const Marquee = async () => {
 
   return (
     <div className="w-full bg-[#fcfcfc] border-b border-gray-200 overflow-hidden select-none">
-      <MarqueeText direction="right" duration={40} pauseOnHover={true} className="flex items-center py-2">
+      <MarqueeText direction="right" duration={10} pauseOnHover={true} className="flex items-center py-2">
         {products.map((item) => {
           const isUp = item.change?.dir === "up" || (item.change?.pct && item.change.pct > 0);
           const isDown = item.change?.dir === "down" || (item.change?.pct && item.change.pct < 0);

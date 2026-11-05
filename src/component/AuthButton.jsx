@@ -3,16 +3,24 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useSession, signOut } from "@/lib/auth-client";
+import { useToast } from "@/context/ToastContext";
 
 export default function AuthButton() {
   const { data: session, isPending } = useSession();
   const user = session?.user;
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toast = useToast();
 
   const handleSignOut = async () => {
-    await signOut();
-    setDropdownOpen(false);
-    window.location.reload();
+    try {
+      await signOut();
+      toast.info("সাইন আউট সফল হয়েছে।");
+      setDropdownOpen(false);
+      window.location.reload();
+    } catch (err) {
+      console.error("Sign out error:", err);
+      window.location.reload();
+    }
   };
 
   if (isPending) {
@@ -90,4 +98,3 @@ export default function AuthButton() {
     </div>
   );
 }
-

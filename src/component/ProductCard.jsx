@@ -29,7 +29,7 @@ const ProductCard = ({ item }) => {
 
   return (
     <Link
-      href={`/categories/${item.category}`}
+      href={`/product/${item.slug}`}
       className="block group"
     >
       <div className="bg-white border border-gray-100 rounded-2xl p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-gray-200 transition-all duration-200 flex flex-col justify-between h-full">

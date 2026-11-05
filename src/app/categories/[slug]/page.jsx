@@ -57,29 +57,18 @@ export default async function CategoryPage({ params }) {
     currentCategory?.icon || categoryProducts[0]?.categoryIcon || "🛒";
 
   return (
-    <div className="bg-[#f6f8f6] min-h-screen pb-16 flex flex-col justify-between">
-      <div>
-        {/* Marquee Ticker */}
-        <Marquee />
+    <div className="bg-[#f6f8f6] min-h-screen pb-16">
+      {/* Marquee Ticker */}
+      <Marquee />
 
-        {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-          <CategoryView
-            products={categoryProducts}
-            categoryNameBn={categoryNameBn}
-            categoryIcon={categoryIcon}
-          />
-        </main>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        <CategoryView
+          products={categoryProducts}
+          categoryNameBn={categoryNameBn}
+          categoryIcon={categoryIcon}
+        />
       </div>
-
-      {/* Footer from Figma */}
-      <footer className="mt-16 border-t border-gray-200/70 py-6 text-xs text-gray-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-          <p>বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।</p>
-          <p>সকল দাম সম্ভাব্য; বাজার অবস্থার ওপর নির্ভর করে পরিবর্তিত হয়।</p>
-        </div>
-      </footer>
     </div>
   );
 }
-

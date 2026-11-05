@@ -1,9 +1,10 @@
 "use client";
 
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
+import { signIn } from "@/lib/auth-client";
 
-export function Basic() {
-  const onSubmit = (e ) => {
+export default function SignIn() {
+  const onSubmit = async (e ) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data  = {};
@@ -13,8 +14,23 @@ export function Basic() {
       data[key] = value.toString();
     });
 
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
-  };
+    const { data:recdata, error } = await signIn.email({
+    email: data.email, // required, The email address of the user.
+    password: data.password, // required, The password of the user. It should be at least 8 characters long and max 128 by default.
+    rememberMe: true, // If false, the user will be signed out when the browser is closed. (optional) (default: true)
+    callbackURL: "/", // An optional URL to redirect to after the user signs in. (optional)
+    });
+    
+    if(error) {
+        console.log(error);
+        alert("Something went wrong. Please try again.");
+    }
+    if(recdata) {
+        console.log(recdata);
+        alert("Sign in successful");
+    }
+        
+};
 
   return (
     <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>

@@ -24,6 +24,7 @@ export const auth = betterAuth({
     client,
   }),
   trustedOrigins: [
+    "http://localhost:3000",
     "https://bazardor-b6l9twmnd-moneytrack.vercel.app",
   ],
 });

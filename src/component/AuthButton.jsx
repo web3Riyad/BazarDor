@@ -58,7 +58,8 @@ export default function AuthButton() {
               className="fixed inset-0 z-10"
               onClick={() => setDropdownOpen(false)}
             />
-            <div className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-20">
+            <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-lg border border-gray-100 py-2 z-20">
+              {/* User Header */}
               <div className="px-4 py-2 border-b border-gray-100">
                 <p className="text-sm font-semibold text-gray-900 truncate">
                   {user.name}
@@ -67,13 +68,27 @@ export default function AuthButton() {
                   {user.email}
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={handleSignOut}
-                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 font-medium transition-colors cursor-pointer"
-              >
-                সাইন আউট (Sign Out)
-              </button>
+
+              {/* Menu Items matching Figma */}
+              <div className="pt-1">
+                <Link
+                  href="/profile"
+                  onClick={() => setDropdownOpen(false)}
+                  className="flex items-center gap-2.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-emerald-700 font-medium transition-colors cursor-pointer"
+                >
+                  <span className="text-base text-gray-400">👤</span>
+                  <span>আমার প্রোফাইল</span>
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={handleSignOut}
+                  className="w-full flex items-center gap-2.5 px-4 py-2 text-sm text-red-600 hover:bg-red-50 font-medium transition-colors cursor-pointer"
+                >
+                  <span className="text-base">↪</span>
+                  <span>সাইন আউট</span>
+                </button>
+              </div>
             </div>
           </>
         )}

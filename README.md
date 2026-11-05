@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# বাজার দর / BazarDor
 
-## Getting Started
+A **Bangla market price tracker** built with Next.js that shows daily price changes of essential goods across Bangladesh. The app is fully responsive, supports authentication (email, Google, GitHub) and provides a detailed view of market prices for each product.
 
-First, run the development server:
+---
+
+## ✨ Short Description
+
+BazarDor aggregates data from the Programming Hero API and displays it in a clean, Bengali‑styled UI. Users can browse all products, see the top price risers/fallers, filter by category, and view detailed market‑wise pricing for any product. All pages are protected where required, and the UI works on mobile, tablet, and desktop.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Next.js 16 (App Router)** – Server‑side rendering and routing
+- **React 19** – UI components
+- **Tailwind CSS v4** + **DaisyUI** – Utility‑first styling & component library
+- **Better‑Auth** – Email/password + Google + GitHub authentication
+- **TypeScript / JavaScript** – Type‑safe codebase (JS files)
+- **react‑marquee‑text** – Continuous price ticker
+- **Vercel** – Deployment platform (or any static host)
+
+---
+
+## 🚀 Key Features (5+)
+
+1. **Hero / Banner**
+   - Bengali date, main heading, subtitle, primary CTA that scrolls to the product list.
+2. **Price Ticker (Marquee)**
+   - Infinite scrolling strip showing emoji, product name, today’s price, and change badge.
+3. **Home Sections**
+   - **Top 6 Risers** (price ↑) and **Top 6 Fallers** (price ↓) with responsive grids.
+   - **All Products** grid – 3‑4 columns on large screens, collapses on mobile.
+4. **Product Detail Page (`/product/[slug]`)**
+   - Protected route (login required).
+   - Summary card with emoji, name, unit, price diff.
+   - Price summary (min / max / average) and market‑wise table.
+5. **Category Pages**
+   - Dynamic category navigation, sort control (default / price low‑high / high‑low), loading skeletons, and empty‑state handling.
+6. **Authentication**
+   - Sign‑in / Sign‑up with email & password, Google & GitHub social logins, toast notifications, and profile update form.
+7. **Responsive Design**
+   - Mobile‑first layout, `max-w-6xl` containers, responsive grids, stacked hero on small screens, and adaptive buttons (`btn-sm sm:btn-md`).
+8. **Footer**
+   - Consistent with the Figma design, displaying a brief tagline on the left and an explanatory note on the right.
+
+---
+
+## 📦 How to Run Locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install dependencies
+pnpm install   # (or npm/yarn)
+
+# Create .env file (add your Better‑Auth credentials)
+cp .env.example .env
+
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+MONGODB_URL=
+
+# Social Providers (Google & GitHub)
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+
+
+
+# Run the development server
+npm run dev   # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📂 Repository Structure (high‑level)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/            # Next.js app router pages (home, product, categories, auth)
+  component/      # Reusable UI components (Hero, Navbar, Footer, ProductCard…)
+  context/        # ToastProvider & utility helpers
+  lib/            # Better‑Auth configuration and client wrapper
+public/            # Static assets (hero image, icons)
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🌐 Live Demo & Source Code
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Live URL:** https://github.com/web3Riyad/BazarDor
+- **GitHub Repository:** https://bazardor-ecru-five.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_Feel free to explore, customize, and extend the project. Happy coding!_
